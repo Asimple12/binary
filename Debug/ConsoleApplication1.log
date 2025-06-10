@@ -6,4 +6,6 @@ D:\文档\密码学综合课程设计\ConsoleApplication1\ConsoleApplication1.cp
 D:\文档\密码学综合课程设计\ConsoleApplication1\ConsoleApplication1.cpp(94,33): warning C4244: “参数”: 从“__int64”转换到“double”，可能丢失数据
 D:\文档\密码学综合课程设计\ConsoleApplication1\ConsoleApplication1.cpp(94,17): warning C4244: “参数”: 从“__int64”转换到“double”，可能丢失数据
 D:\文档\密码学综合课程设计\ConsoleApplication1\ConsoleApplication1.cpp(94,16): warning C4244: “=”: 从“double”转换到“__int64”，可能丢失数据
+D:\文档\密码学综合课程设计\ConsoleApplication1\ConsoleApplication1.cpp(106,24): warning C4101: “elapsed_time2”: 未引用的局部变量
+D:\文档\密码学综合课程设计\ConsoleApplication1\ConsoleApplication1.cpp(106,39): warning C4101: “elapsed_time3”: 未引用的局部变量
   ConsoleApplication1.vcxproj -> D:\文档\密码学综合课程设计\ConsoleApplication1\Debug\ConsoleApplication1.exe

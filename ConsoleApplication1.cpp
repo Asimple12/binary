@@ -101,12 +101,25 @@ long long SildeWindow(int a,int b,int m, long long result) {//滑动窗口算法
 	printf("%lld\n", result);
 	return result;
 }
+void test(int a1,int b1,int m1,long long result1) {
+	LARGE_INTEGER start_time, end_time, freq;
+	double elapsed_time1, elapsed_time2, elapsed_time3;
+	QueryPerformanceFrequency(&freq);
+	QueryPerformanceCounter(&start_time);
+
+	primary(a1, b1, m1, result1);
+
+	QueryPerformanceCounter(&end_time);
+	elapsed_time1 = (end_time.QuadPart - start_time.QuadPart) / (double)freq.QuadPart;
+	printf("函数执行时间：%.9fs\n", elapsed_time1);
+}
 int main() {
 	int a1 =9;
 	int b1 =28;
 	int m1 = 13;
 	long long result1 = 0;
-	LARGE_INTEGER start_time, end_time,freq;
+	test(a1, b1, m1, result1);
+	/*LARGE_INTEGER start_time, end_time, freq;
 	double elapsed_time1, elapsed_time2, elapsed_time3;
 	QueryPerformanceFrequency(&freq);
 	QueryPerformanceCounter(&start_time);
@@ -137,7 +150,7 @@ int main() {
 
 	QueryPerformanceCounter(&end_time);
 	elapsed_time3 = (end_time.QuadPart - start_time.QuadPart) / (double)freq.QuadPart;
-	printf("函数执行时间：%.9fs\n", elapsed_time3);
+	printf("函数执行时间：%.9fs\n", elapsed_time3);*/
 	
 	return 0;
 }
