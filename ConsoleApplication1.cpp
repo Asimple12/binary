@@ -14,11 +14,12 @@ long long IntoBinary(long long n, int num[], long long k) {//将指数转为二�
 	k = i;//k表示二进制位数
 	return k;
 }
-long long primary(int a, int b, int m, unsigned long long int result) {//直接进行模幂计算
+long long primary(int a, int b, int m,long long result) {//直接进行模幂计算
 	//result = pow(a ,b);//% m;
 	//result = int(pow(a, b))% m;
+	result = unsigned long long int(result);
 	result = pow(a, b);
-	result = result % m;
+	result = result % m;	
 	printf("%llu\n", result);
 	return result;
 }
@@ -101,13 +102,13 @@ long long SildeWindow(int a,int b,int m, long long result) {//滑动窗口算法
 	printf("%lld\n", result);
 	return result;
 }
-void test(int a1,int b1,int m1,long long result1) {
+void test(int a1,int b1,int m1,long long result1,long long (*func)(int,int,int,long long)) {
 	LARGE_INTEGER start_time, end_time, freq;
 	double elapsed_time1, elapsed_time2, elapsed_time3;
 	QueryPerformanceFrequency(&freq);
 	QueryPerformanceCounter(&start_time);
 
-	primary(a1, b1, m1, result1);
+	func(a1, b1, m1, result1);
 
 	QueryPerformanceCounter(&end_time);
 	elapsed_time1 = (end_time.QuadPart - start_time.QuadPart) / (double)freq.QuadPart;
@@ -118,39 +119,8 @@ int main() {
 	int b1 =28;
 	int m1 = 13;
 	long long result1 = 0;
-	test(a1, b1, m1, result1);
-	/*LARGE_INTEGER start_time, end_time, freq;
-	double elapsed_time1, elapsed_time2, elapsed_time3;
-	QueryPerformanceFrequency(&freq);
-	QueryPerformanceCounter(&start_time);
-
-	primary(a1, b1, m1, result1);
-
-	QueryPerformanceCounter(&end_time);
-	elapsed_time1 = (end_time.QuadPart - start_time.QuadPart) / (double)freq.QuadPart;
-	printf("函数执行时间：%.9fs\n", elapsed_time1);
-
-
-	QueryPerformanceFrequency(&freq);
-	QueryPerformanceCounter(&start_time);
-
-
-	binary(a1, b1, m1, result1);
-
-	QueryPerformanceCounter(&end_time);
-	elapsed_time2 = (end_time.QuadPart - start_time.QuadPart) / (double)freq.QuadPart;
-	printf("函数执行时间：%.9fs\n", elapsed_time2);
-	
-
-	QueryPerformanceFrequency(&freq);
-	QueryPerformanceCounter(&start_time);
-
-
-	SildeWindow(a1, b1, m1, result1);
-
-	QueryPerformanceCounter(&end_time);
-	elapsed_time3 = (end_time.QuadPart - start_time.QuadPart) / (double)freq.QuadPart;
-	printf("函数执行时间：%.9fs\n", elapsed_time3);*/
-	
+	test(a1, b1, m1, result1,primary);
+	test(a1, b1, m1, result1,binary);
+	test(a1, b1, m1, result1,SildeWindow);	
 	return 0;
 }
